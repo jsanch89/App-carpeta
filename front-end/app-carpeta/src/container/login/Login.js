@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Login = (props) => {
+  const loginFunction = (event) => {
+    event.preventDefault();
+  }
+
   return (
     <div>
       <h1> Name operator </h1>
@@ -8,7 +12,7 @@ const Login = (props) => {
       <div className="app-form">
         <h1>Login</h1>
         <h4>write email and password</h4>
-        <form>
+        <form onSubmit={(event) => loginFunction(event)}>
           <label>Email </label>
           <input type="email" id="email" name="email" placeholder="example@domain.com"></input>
           <label>Password </label>

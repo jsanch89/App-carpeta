@@ -1,9 +1,10 @@
 import React from 'react';
+import LoadFile from '../../component/forms/LoadFileForm';
 
 const File = () => {
   return (
     <div>
-      <p>File</p>
+      <LoadFile />
     </div>
   );
 }

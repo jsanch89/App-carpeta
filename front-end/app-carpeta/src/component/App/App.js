@@ -1,20 +1,13 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
 import './App.css';
-import UserRegister from '../../container/user-resgister/UserResgiter';
-import File from '../../container/file/File';
-import NavBar from '../naav-bar/NavBar';
-import Login from '../../container/login/Login';
+import PubliContent from '../../container/public/PublicRoute';
+import LoggedContent from '../../container/logged/LoggedContent';
 
 function App () {
+  const [isLogged, setIsLogged] = useState(true);
   return (
     <div className="App">
-      <NavBar />
-      <Switch>
-        <Route exact path="/register" component={UserRegister} />
-        <Route path="/file" component={File} />
-        <Route path="/" component={Login} />
-      </Switch>
+      {isLogged ? <LoggedContent /> : <PubliContent />}
     </div>
   );
 }
