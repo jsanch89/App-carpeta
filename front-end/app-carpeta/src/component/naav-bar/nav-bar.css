@@ -1,0 +1,27 @@
+.nav-bar {
+  background: #33D4FF;
+  padding: 10px;
+  text-align: right;
+}
+
+.nav-bar-link {
+  text-decoration: none;
+  color: aliceblue;
+  padding: 5px;
+  margin: 5px;
+  font-size: large;
+}
+
+.nav-bar-link:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  display: inline;
+}
+
+li {
+  display: inline;
+}

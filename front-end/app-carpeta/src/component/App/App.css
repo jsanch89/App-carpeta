@@ -13,6 +13,10 @@
   }
 }
 
+h1 {
+  color: #33D4FF;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -26,6 +30,71 @@
 
 .App-link {
   color: #61dafb;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:invalid {
+  border: red solid 0.5px;
+}
+
+input:valid {
+  border: #33D4FF solid 0.5px;
+}
+
+button {
+  background-color: #33D4FF;
+  border: #33D4FF;
+  border-radius: 10%;
+  padding: 3px;
+  margin: 10px;
+}
+
+.app-form {
+  width: 50%;
+  padding: 1% 1% 10%;
+  border: 2px solid black;
+  border-radius: 2em;
+  margin: auto;
+}
+
+.app-form h1 h2 h3 h4 h5 h6 {
+  display: block;
+}
+
+.app-form label {
+  font-weight: bold;
+}
+
+input {
+  border-radius: 0.5em;
+  display: block;
+  margin: 1% auto;
+  text-align: center;
+  width: 10rem;
+}
+
+#app-form-submit-button {
+  background-color: #33D4FF;
+  border: #33D4FF;
+  border-radius: 10%;
+  padding: 3px;
+  margin: 4% auto;
+}
+
+#app-form-submit-button:active {
+  background-color: #04AADF;
+  border: #04AADF;
+  border-radius: 10%;
+  padding: 3px;
+  margin: 4% auto;
+}
+
+#app-form-submit-button:hover {
+  border: solid 1px black;
+  margin: 4% auto;
 }
 
 @keyframes App-logo-spin {
