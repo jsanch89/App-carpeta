@@ -1,0 +1,11 @@
+---
+    applications:
+      - name: api-upload
+        memory: 256M
+        disk_quota: 512M
+        buildpack: nodejs_buildpack
+        host: micarpeta
+        command: npm start
+        env:
+          env_type: development
+    
