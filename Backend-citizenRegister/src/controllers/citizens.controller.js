@@ -1,5 +1,6 @@
 const citizensCtrl = {};
-const fetch = require('node-fetch'); 
+const fetch = require('node-fetch');
+const jwt = require('jsonwebtoken');
 // Models
 const Citizen = require('../models/Citizen');
 
@@ -57,10 +58,31 @@ citizensCtrl.singup = async (req, res) => {
     }
 };
 
-citizensCtrl.signin = passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/login",
-  failureFlash: true
-});
+citizensCtrl.signin = async (req, res, next) => {
+  passport.authenticate(
+    'login',
+    async (err, citizen, info) => {
+      try {
+        console.log(err);
+        if (err || !citizen) {
+          const error = new Error('An error occurred.');
+          return next(error);
+        }
+        req.login(
+          citizen,
+          { session: false },
+          async (error) => {
+            if (error) return next(error);
+            const body = { _id: citizen._id, cedula: citizen.cedula };
+            const token = jwt.sign({ citizen: body }, 'TOP_SECRET');
+            return res.json({ token });
+          }
+        );
+      } catch (error) {
+        return next(error);
+      }
+    }
+  )(req, res, next);
+};
 
 module.exports = citizensCtrl;
