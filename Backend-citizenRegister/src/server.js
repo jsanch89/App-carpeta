@@ -7,7 +7,9 @@ const flash = require("connect-flash");
 const morgan = require("morgan");
 const connectMongo = require("connect-mongo");
 const mongoose = require("mongoose");
+const passport = require("passport");
 const app = express();
+require("./config/passport");
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
@@ -26,6 +28,9 @@ app.use(
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // routes

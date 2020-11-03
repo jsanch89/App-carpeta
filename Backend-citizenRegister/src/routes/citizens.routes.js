@@ -4,7 +4,7 @@ const {
   //renderSignUpForm,
   singup,
   //renderSigninForm,
-  //signin,
+  signin,
   //logout
 } = require("../controllers/citizens.controller");
 
@@ -15,7 +15,7 @@ router.post("/citizens/signup", singup);
 
 //router.get("/citizens/signin", renderSigninForm);
 
-//router.post("/citizens/signin", signin);
+router.post("/citizens/signin", signin);
 
 //router.get("/citizens/logout", logout);
 

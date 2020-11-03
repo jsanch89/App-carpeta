@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-//const bcrypt = require("bcryptjs");
 
 const CitizenSchema = new Schema({
   id: { type: Number, required: true, unique: true  },
@@ -12,13 +11,8 @@ const CitizenSchema = new Schema({
   operatorName: { type: String },
 });
 
-/*UserSchema.methods.encryptPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
+CitizenSchema.methods.matchPassword = async function (password) {
+  return await password === this.password;
 };
-
-UserSchema.methods.matchPassword = async function (password) {
-  return await bcrypt.compare(password, this.password);
-};*/
 
 module.exports = model("Citizen", CitizenSchema);

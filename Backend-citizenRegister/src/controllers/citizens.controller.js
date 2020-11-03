@@ -3,6 +3,9 @@ const fetch = require('node-fetch');
 // Models
 const Citizen = require('../models/Citizen');
 
+// Modules
+const passport = require("passport");
+
 citizensCtrl.singup = async (req, res) => {
     let errors = [];
     const { id, name, address, email, password, confirm_password } = req.body;
@@ -17,14 +20,14 @@ citizensCtrl.singup = async (req, res) => {
         password,
         confirm_password
       });*/
-      res.send("501", errors);
+      res.status(501).send(errors);
     } else {
       // Look for email coincidence
       const cedulaCitizen = await Citizen.findOne({ id: id });
       if (cedulaCitizen) {
         /*req.flash("error_msg", "The Email is already in use.");
         res.redirect("/users/signup");*/
-        res.send("501", `El ciudadano con cédula ${id} ya se encuentra registrado en este operador.`);
+        res.status(501).send(`El ciudadano con cédula ${id} ya se encuentra registrado en este operador.`);
       } else {
         // Saving a New Citizen
         //TODO change hardcoded data
@@ -45,13 +48,19 @@ citizensCtrl.singup = async (req, res) => {
             headers: { 'Content-Type': 'application/json' },
         })
         if(response.status === 201){
-            res.send("201", `Ciudadano con id: ${id} relacionado con Operador: ${operatorName} creado exitosamente.`);
+            res.status(201).send(`Ciudadano con id: ${id} relacionado con Operador: ${operatorName} creado exitosamente.`);
             await newCitizen.save();
         } else {
-            res.send("501", `Error al crear Ciudadano con id: ${id} ya se encuentra registrado en la carpeta ciudadana.`);
+            res.status(501).send(`Error al crear Ciudadano con id: ${id} ya se encuentra registrado en la carpeta ciudadana.`);
         }
       }
     }
 };
+
+citizensCtrl.signin = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+  failureFlash: true
+});
 
 module.exports = citizensCtrl;
