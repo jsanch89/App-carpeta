@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
+
 dotenv.config();
 
 // Connect DB
@@ -15,11 +17,11 @@ mongoose
   .then(() => console.log("mongoDB is connected"))
   .catch((err) => console.log(err));
 
-  app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 5000);
 
 // Middleware
 app.use(express.json());
-
+app.use(cors());
 // Route
 app.use('/document', require('./routes/document'))
 

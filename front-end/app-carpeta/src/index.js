@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import './index.css';
 import App from './component/App/App';
-import ValidationReducer from './store/user_validation-store';
 import reportWebVitals from './reportWebVitals';
+import Store from './store/store';
 
 ReactDOM.render(
 
   <React.StrictMode>
-
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <Store>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Store>
 
   </React.StrictMode>,
   document.getElementById('root')
