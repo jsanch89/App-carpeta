@@ -21,7 +21,7 @@ mongoose
 app.use(express.json());
 
 // Route
-app.use('/user', require('./routes/user'))
+app.use('/document', require('./routes/document'))
 
 app.listen(app.get('port'), () => {
   console.log('Server on port', app.get('port'));
