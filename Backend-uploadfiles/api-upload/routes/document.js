@@ -7,7 +7,7 @@ const Document = require("../model/document");
 router.post("/uploadDocument", upload.single("image"), async (req, res) => {
   try {
     // Upload image to cloudinary
-    const result = await cloudinary.uploader.upload(req.body.file.path);
+    const result = await cloudinary.uploader.upload(req.file.path);
     let document = new Document({
       cedula: req.body.cedula,
       documentTitle: req.body.name,

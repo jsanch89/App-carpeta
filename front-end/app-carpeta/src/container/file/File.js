@@ -32,6 +32,8 @@ const File = () => {
 
   return (
     <div>
+      <h1> LoadFile </h1>
+      <h4> Select a file </h4>
       <LoadFile submitHandler={submitFileHandler} />
     </div>
   );

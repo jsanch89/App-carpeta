@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import validationReducer from './reducer/user_validation-reducer'
 
-
 const initialState = {
   idNumber: undefined,
   isValid: false,
